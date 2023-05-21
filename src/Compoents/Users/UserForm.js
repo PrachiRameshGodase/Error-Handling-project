@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import Card from "../UI/Card"
 import Button from "../UI/Button"
+import Wrapper from "../Helpers/Wrapper"
+import ErrorModal from '../UI/ErrorModal';
 import classes from "./UserForm.module.css"
-import ErrorModale from '../UI/ErrorModale';
 
 
 function UserForm(props) {
@@ -44,8 +45,8 @@ function UserForm(props) {
       setError(null)
     }
   return (
-    <div>
-    { error && <ErrorModale title={error.title} message={error.message} onConfirm={errorHandler}/>}
+    <React.Fragment>
+    { error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
     <Card className={classes.input}>
       <form onSubmit={addSubmitHandler}> 
       <label htmlFor='username'>UserName</label>
@@ -64,7 +65,7 @@ function UserForm(props) {
         <Button type='submit'>Add User</Button>
       </form>
     </Card>
-    </div>
+    </React.Fragment>
   )
 }
 
